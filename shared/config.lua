@@ -200,16 +200,16 @@ Config.RemoveWeaponsPerms = {
 }
 
 Config.PenalCodeTitles = {
-    [1] = 'OFFENSES AGAINST PERSONS',
-    [2] = 'OFFENSES INVOLVING THEFT',
-    [3] = 'OFFENSES INVOLVING FRAUD',
-    [4] = 'OFFENSES INVOLVING DAMAGE TO PROPERTY',
-    [5] = 'OFFENSES AGAINST PUBLIC ADMINISTRATION',
-    [6] = 'OFFENSES AGAINST PUBLIC ORDER',
-    [7] = 'OFFENSES AGAINST HEALTH AND MORALS',
-    [8] = 'OFFENSES AGAINST PUBLIC SAFETY',
-    [9] = 'OFFENSES INVOLVING THE OPERATION OF A VEHICLE',
-    [10] = 'OFFENSES INVOLVING THE WELL-BEING OF WILDLIFE',
+    [1] = '針對人的犯罪',
+    [2] = '涉及竊盜的犯罪',
+    [3] = '涉及欺詐的犯罪',
+    [4] = '涉及損壞財物的犯罪',
+    [5] = '對公共行政的犯罪',
+    [6] = '對公共秩序的犯罪',
+    [7] = '對健康和道德的犯罪',
+    [8] = '對公共安全的犯罪',
+    [9] = '涉及行駛車輛的犯罪',
+    [10] = '涉及野生動物福利的犯罪',
 }
 
 Config.PenalCode = {
@@ -752,28 +752,28 @@ Config.ColorInformation = {
 }
 
 Config.ClassList = {
-    [0] = "Compact",
-    [1] = "Sedan",
-    [2] = "SUV",
-    [3] = "Coupe",
-    [4] = "Muscle",
-    [5] = "Sport Classic",
-    [6] = "Sport",
-    [7] = "Super",
-    [8] = "Motorbike",
-    [9] = "Off-Road",
-    [10] = "Industrial",
-    [11] = "Utility",
-    [12] = "Van",
-    [13] = "Bike",
-    [14] = "Boat",
-    [15] = "Helicopter",
-    [16] = "Plane",
-    [17] = "Service",
-    [18] = "Emergency",
-    [19] = "Military",
-    [20] = "Commercial",
-    [21] = "Train"
+    [0] = "緊湊型轎車",
+    [1] = "轎車",
+    [2] = "運動型多用途車（SUV）",
+    [3] = "轎跑車",
+    [4] = "肌肉車",
+    [5] = "經典運動車",
+    [6] = "運動車",
+    [7] = "超級跑車",
+    [8] = "摩托車",
+    [9] = "越野車",
+    [10] = "工業車輛",
+    [11] = "實用車",
+    [12] = "廂型車",
+    [13] = "自行車",
+    [14] = "船",
+    [15] = "直升機",
+    [16] = "飛機",
+    [17] = "服務車輛",
+    [18] = "緊急車輛",
+    [19] = "軍事車輛",
+    [20] = "商業車輛",
+    [21] = "火車"
 }
 
 function GetJobType(job)
