@@ -111,7 +111,6 @@ function GetPlayerLicenses(identifier)
                     ['driver'] = false,
                     ['business'] = false,
                     ['weapon'] = false,
-                    ['pilot'] = false
                 }
             end
         end
@@ -152,7 +151,6 @@ function UpdateAllLicenses(identifier, incomingLicenses)
             ['driver'] = true,
             ['business'] = false,
             ['weapon'] = false,
-            ['pilot'] = false
         }
 
         for k, _ in pairs(incomingLicenses) do

@@ -7,7 +7,10 @@ version '2.5.0'
 
 lua54 'yes'
 
-shared_script 'shared/config.lua'
+shared_scripts {
+    '@ox_lib/init.lua',
+    'shared/config.lua'
+}
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',

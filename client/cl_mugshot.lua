@@ -127,7 +127,7 @@ local function PrepBoard()
 end
 
 local function MakeBoard()
-    title = "Bolingbroke Penitentiary"
+    title = "博林布魯克監獄"
     center = playerData.charinfo.firstname.. " ".. playerData.charinfo.lastname
     footer = playerData.citizenid
     header = playerData.charinfo.birthdate
@@ -186,7 +186,7 @@ RegisterNetEvent('cqc-mugshot:client:trigger', function()
             SetEntityHeading(ped, suspectheading)
             ClearPedSecondaryTask(GetPlayerPed(ped))
         end
-           TriggerServerEvent('psmdt-mugshot:server:MDTupload', playerData.citizenid, MugshotArray)
+           TriggerServerEvent('psmdt-mugshot:server:MDTupload', citizenid, MugshotArray)
         mugshotInProgress = false
     end)
 end)

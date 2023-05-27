@@ -8,11 +8,11 @@ Config.UseCQCMugshot = true
 Config.MugPhotos = 1
 
 -- Images for mug shots will be uploaded here. Add a Discord webhook. 
-Config.MugShotWebhook = 'https://discord.com/api/webhooks/1104331388611723274/jvc-OdQdfyIyyOSC6h0cK7s04kwB1JbrGHirSWeukmStvYOR9CO8p2bg4Icx1JTMi09J'
+Config.MugShotWebhook = 'https://discord.com/api/webhooks/1111946432371499101/oAhLSGjYLK7quyhsu7SW4FhJ6SrjyRczLg0SGsdX2ItjFm2BZHm1p8WjlDJGTxYVKwAQ'
 
 -- Clock-in notifications for duty. Add a Discord webhook.
 -- Command /mdtleaderboard, will display top players per clock-in hours.
-Config.ClockinWebhook = 'https://discord.com/api/webhooks/1104331475790336050/4e769oivacS0dT0x4ajGYNqe3G4hqIVIKPyGfkrBP_4ww0p1_jdPJatOMwY8qn1UfFFI'
+Config.ClockinWebhook = 'https://discord.com/api/webhooks/1111946554471878686/ryh37yMU421EKY4yu4RC6ui8YSIytxAEu175H6vXgRi8l5vqnk5q_oedoe9ed-jIF0PE'
 
 -- If set to true = Fine gets automatically removed from bank automatically charging the player.
 -- If set to false = The fine gets sent as an Invoice to their phone and it us to the player to pay for it, can remain unpaid and ignored.

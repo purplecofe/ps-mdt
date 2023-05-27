@@ -332,7 +332,6 @@ QBCore.Functions.CreateCallback('mdt:server:GetProfileData', function(source, cb
         ['driver'] = false,
         ['business'] = false,
         ['weapon'] = false,
-		['pilot'] = false
 	}
 
 	local job, grade = UnpackJob(target.job)

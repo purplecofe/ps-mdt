@@ -26,7 +26,7 @@ let rosterLink  = "";
 let sopLink = "";
 
 //Set this to false if you don't want to show the send to community service button on the incidents page
-const canSendToCommunityService = true
+const canSendToCommunityService = false
 
 let impoundChanged = false;
 
@@ -771,8 +771,6 @@ $(document).ready(() => {
       <div style="color: white;">
       <p><strong>📝 摘要：</strong></p>
       <p><em>[在此插入報告摘要]</em></p>
-      <p>&nbsp;</p>
-      <p><strong>🧍 人質：</strong> [在此插入名稱]</p>
       <p>&nbsp;</p>
       <p><strong>🔪 扣押的武器/物品：</strong></p>
       <p><em>· [在此插入列表]</em></p>
@@ -2079,13 +2077,13 @@ $(document).ready(() => {
                 <div class="associated-incidents-fine-input" data-id="${$(this).data("cid")}"><img src="img/h7S5f9J.webp"> <input disabled placeholder="0" class="fine-recommended-amount" id="fine-recommended-amount" data-id="${$(this).data("cid")}" type="number"></div>
                 <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">建議刑期</div>
                 <div class="associated-incidents-sentence-input" data-id="${$(this).data("cid")}"><img src="img/9Xn6xXK.webp"> <input disabled placeholder="0" class="sentence-recommended-amount" id="sentence-recommended-amount" data-id="${$(this).data("cid")}" type="number"></div>
-                <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">罰款</div>
+                <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">最終罰款</div>
                 <div class="associated-incidents-fine-input" data-id="${$(this).data("cid")}"><img src="img/h7S5f9J.webp"> <input placeholder="在此輸入罰款..." value="0" class="fine-amount" data-id="${$(this).data("cid")}" type="number"></div>
-                <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">刑期</div>
+                <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">最終刑期</div>
                 <div class="associated-incidents-sentence-input" data-id="${$(this).data("cid")}"><img src="img/9Xn6xXK.webp"> <input placeholder="在此輸入月份..." value="0" class="sentence-amount" data-id="${$(this).data("cid")}" type="number"></div>
                 <div class="associated-incidents-controls" data-id="${$(this).data("cid")}">
-                    <div id="jail-button" class="control-button" data-id="${$(this).data("cid")}"><span class="fa-solid fa-building-columns" style="margin-top: 3.5px;"></span> 送監獄</div>
-                    <div id="fine-button" class="control-button" data-id="${$(this).data("cid")}"><span class="fa-solid fa-file-invoice-dollar" style="margin-top: 3.5px;"></span> 開罰單</div>
+                    <div id="jail-button" class="control-button" data-id="${$(this).data("cid")}"><span class="fa-solid fa-building-columns" style="margin-top: 3.5px;"></span> 判刑</div>
+                    <div id="fine-button" class="control-button" data-id="${$(this).data("cid")}"><span class="fa-solid fa-file-invoice-dollar" style="margin-top: 3.5px;"></span> 罰單</div>
                     ${canSendToCommunityService ? `<div id="community-service-button" class="control-button" data-id="${$(this).data("cid")}"> <span class="fa-solid fa-person-digging" style="margin-top: 3.5px;"></span>勞動服務</div>` : ''}
                 </div>
             </div>
@@ -4872,13 +4870,13 @@ window.addEventListener("message", function (event) {
           <div class="associated-incidents-fine-input" data-id="${cid}"><img src="img/h7S5f9J.webp"> <input placeholder="0" disabled class="fine-recommended-amount" id="fine-recommended-amount" data-id="${cid}" type="number"></div>
           <div class="manage-incidents-title-tag" data-id="${cid}">建議刑期</div>
           <div class="associated-incidents-sentence-input" data-id="${cid}"><img src="img/9Xn6xXK.webp"> <input placeholder="0" disabled class="sentence-recommended-amount" id="sentence-recommended-amount" data-id="${cid}" type="number"></div>
-          <div class="manage-incidents-title-tag" data-id="${cid}">Fine</div>
+          <div class="manage-incidents-title-tag" data-id="${cid}">最終罰款</div>
           <div class="associated-incidents-fine-input" data-id="${cid}"><img src="img/h7S5f9J.webp"> <input placeholder="在此輸入罰款..." value="0" class="fine-amount" data-id="${cid}" type="number"></div>
-          <div class="manage-incidents-title-tag" data-id="${cid}">Sentence</div>
+          <div class="manage-incidents-title-tag" data-id="${cid}">最終刑期</div>
           <div class="associated-incidents-sentence-input" data-id="${cid}"><img src="img/9Xn6xXK.webp"> <input placeholder="在此輸入月份..." value="0" class="sentence-amount" data-id="${cid}" type="number"></div>
           <div class="associated-incidents-controls" data-id="${cid}">
-            <div id="jail-button" class="control-button" data-id="${cid}"><span class="fa-solid fa-building-columns" style="margin-top: 3.5px;"></span> 送監獄</div>
-            <div id="fine-button" class="control-button" data-id="${cid}"><span class="fa-solid fa-file-invoice-dollar" style="margin-top: 3.5px;"></span> 開罰單</div>
+            <div id="jail-button" class="control-button" data-id="${cid}"><span class="fa-solid fa-building-columns" style="margin-top: 3.5px;"></span> 判刑</div>
+            <div id="fine-button" class="control-button" data-id="${cid}"><span class="fa-solid fa-file-invoice-dollar" style="margin-top: 3.5px;"></span> 罰單</div>
             ${canSendToCommunityService ? `<div id="community-service-button" class="control-button" data-id="${cid}"> <span class="fa-solid fa-person-digging" style="margin-top: 3.5px;"></span>勞動服務</div>` : ''}
           </div>
         `;
