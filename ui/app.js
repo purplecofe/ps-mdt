@@ -52,18 +52,18 @@ const DojJobs = {
 }
 
 const MONTH_NAMES = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  "一月",
+  "二月",
+  "三月",
+  "四月",
+  "五月",
+  "六月",
+  "七月",
+  "八月",
+  "九月",
+  "十月",
+  "十一月",
+  "十二月",
 ];
 
 function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
@@ -89,30 +89,30 @@ function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
 }
 
 var quotes = [
-  'Project Sloth On Top!',
-  'A Discord rewrite fixes everything...',
-  'Does anyone even read these?',
-  'The best way to predict your future is to create it.',
-  'Believe you can and you\'re halfway there.',
-  'In three words I can sum up everything I\'ve learned about life: it goes on.',
-  'The only way to do great work is to love what you do.',
-  'Success is not final, failure is not fatal: it is the courage to continue that counts.',
-  'Life is 10% what happens to us and 90% how we react to it.',
-  'The only true wisdom is in knowing you know nothing.',
-  'If you want to live a happy life, tie it to a goal, not to people or things.',
-  'Happiness is not something ready-made. It comes from your own actions.',
-  'The greatest glory in living lies not in never falling, but in rising every time we fall.',
-  'The only thing necessary for the triumph of evil is for good men to do nothing.',
-  'It does not matter how slowly you go as long as you do not stop.',
-  'The best time to plant a tree was 20 years ago. The second best time is now.',
-  'Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.',
-  'Don\'t watch the clock; do what it does. Keep going.',
-  'You miss 100% of the shots you don\'t take.',
-  'You can\'t go back and change the beginning, but you can start where you are and change the ending.',
-  'It\'s not the years in your life that count. It\'s the life in your years.',
-  'The greatest glory in living lies not in never falling, but in rising every time we fall.',
-  'The two most important days in your life are the day you are born and the day you find out why.',
-  'Success is not how high you have climbed, but how you make a positive difference to the world.',
+  '樹懶計劃領先！',
+  'Discord重寫能解決所有問題...',
+  '有人真的會讀這些嗎？',
+  '預測未來最好的方式就是創造它。',
+  '只要你相信你能，你已經成功了一半。',
+  '我用三個字總結我對生活的理解：生活繼續。',
+  '做好一件事的唯一方法就是熱愛你所做的。',
+  '成功不是終點，失敗不是致命的：真正重要的是繼續前進的勇氣。',
+  '生活的10%在於發生在我們身上的事，90%在於我們如何對待。',
+  '唯一的真正智慧就是知道自己一無所知。',
+  '如果你想過上快樂的生活，就把它和一個目標繫在一起，而不是人或物。',
+  '快樂不是現成的，它來自你自己的行為。',
+  '生活中最偉大的榮耀不在於我們從未跌倒，而在於我們每次跌倒後都能站起來。',
+  '惡勝利的唯一必要條件是好人什麼都不做。',
+  '只要你不停止前進，走得多慢都沒關係。',
+  '種樹的最好時機是二十年前，第二好的時機是現在。',
+  '相信你自己和你的所有。知道你內在有比任何障礙更偉大的東西。',
+  '別看時間；做它該做的事。繼續前進。',
+  '你不射的每一球，你都會錯過。',
+  '你不能回去改變開始，但你可以從現在開始改變結局。',
+  '重要的不是你的生活有多少年，而是你的年華有多少生活。',
+  '生活中最偉大的榮耀不在於我們從未跌倒，而在於我們每次跌倒後都能站起來。',
+  '你生命中最重要的兩天是你出生的那一天和你發現為什麼的那一天。',
+  '成功不在於你攀得多高，而在於你如何對世界產生積極影響。',
 ]
 
 function randomizeQuote() {
@@ -136,17 +136,17 @@ function timeAgo(dateParam) {
   const isThisYear = today.getFullYear() === date.getFullYear();
 
   if (seconds < 5) {
-    return "Just Now";
+    return "剛剛";
   } else if (seconds < 60) {
-    return `${seconds} Seconds ago`;
+    return `${seconds} 秒前`;
   } else if (seconds < 90) {
-    return "About a minute ago";
+    return "大約一分鐘前";
   } else if (minutes < 60) {
-    return `${minutes} Minutes ago`;
+    return `${minutes} 分鐘前`;
   } else if (isToday) {
-    return getFormattedDate(date, "Today");
+    return getFormattedDate(date, "今天");
   } else if (isYesterday) {
-    return getFormattedDate(date, "Yesterday");
+    return getFormattedDate(date, "昨天");
   } else if (isThisYear) {
     return getFormattedDate(date, false, true);
   }
@@ -232,7 +232,7 @@ $(document).ready(() => {
 
     const { vehicles, tags, gallery, convictions, incidents, properties, fingerprint } = result;
 
-    $(".manage-profile-editing-title").html(`You are currently editing ${result["firstname"]} ${result["lastname"]}`);
+    $(".manage-profile-editing-title").html(`你正在編輯 ${result["firstname"]} ${result["lastname"]}`);
     $(".manage-profile-citizenid-input").val(result['cid']);
     $(".manage-profile-name-input-1").val(result["firstname"]);
     $(".manage-profile-name-input-2").val(result["lastname"]);
@@ -256,14 +256,14 @@ $(document).ready(() => {
     $(".convictions-holder").empty();
     $(".profile-incidents-holder").empty();
 
-    let licencesHTML = '<div style="color: #fff; text-align:center;">No Licenses</div>';
-    let tagsHTML = '<div style="color: #fff; text-align:center;">No Tags</div>';
-    let convHTML = '<div style="color: #fff; text-align:center;">Clean Record</div>';
-    let incidentsHTML = '<div style="color: #fff; text-align:center;">No Incidents</div>';
-    let vehHTML = '<div style="color: #fff; text-align:center;">No Vehicles</div>';
-    let galleryHTML = '<div style="color: #fff; text-align:center;">No Photos</div>';
-    let propertyHTML = '<div style="color: #fff; text-align:center;">No Properties</div>';
-
+    let licencesHTML = '<div style="color: #fff; text-align:center;">無許可證</div>';
+    let tagsHTML = '<div style="color: #fff; text-align:center;">無標籤</div>';
+    let convHTML = '<div style="color: #fff; text-align:center;">無前科紀錄</div>';
+    let incidentsHTML = '<div style="color: #fff; text-align:center;">無事件</div>';
+    let vehHTML = '<div style="color: #fff; text-align:center;">無車輛</div>';
+    let galleryHTML = '<div style="color: #fff; text-align:center;">無照片</div>';
+    let propertyHTML = '<div style="color: #fff; text-align:center;">無房產</div>';
+    
     // convert key value pair object of licenses to array
     let licenses = Object.entries(result.licences);
 
@@ -364,7 +364,7 @@ $(document).ready(() => {
                 <span contenteditable="true" class="bulletin-item-title"></span>
                 <span contenteditable="true" class="bulletin-item-info"></span>
                 <div class="bulletin-bottom-info">
-                <div class="bulletin-date">${MyName} - Just Now</div>
+                <div class="bulletin-date">${MyName} - 剛剛</div>
                 </div>
             </div>`);
     } else {
@@ -417,7 +417,7 @@ $(document).ready(() => {
         {
           className: "remove-bulletin",
           icon: "fas fa-times",
-          text: "Remove Item",
+          text: "刪除",
           info: $(this).data("id"),
           status: $(this).data("title"),
         },
@@ -769,21 +769,21 @@ $(document).ready(() => {
     function () {
       let template = `
       <div style="color: white;">
-          <p><strong>📝 Summary:</strong></p>
-          <p><em>[Insert Report Summary Here]</em></p>
-          <p>&nbsp;</p>
-          <p><strong>🧍 Hostage:</strong> [Name Here]</p>
-          <p>&nbsp;</p>
-          <p><strong>🔪 Weapons/Items Confiscated:</strong></p>
-          <p><em>· [Insert List Here]</em></p>
-          <p>&nbsp;</p>
-          <p>-----</p>
-          <p><strong style="background-color: var(--color-1);">💸 Fine:</strong></p>
-          <p>&nbsp;</p>
-          <p><strong>⌚ Sentence:</strong></p>
-          <p>-----</p>
-      </div>
-  `;
+      <p><strong>📝 摘要：</strong></p>
+      <p><em>[在此插入報告摘要]</em></p>
+      <p>&nbsp;</p>
+      <p><strong>🧍 人質：</strong> [在此插入名稱]</p>
+      <p>&nbsp;</p>
+      <p><strong>🔪 扣押的武器/物品：</strong></p>
+      <p><em>· [在此插入列表]</em></p>
+      <p>&nbsp;</p>
+      <p>-----</p>
+      <p><strong style="background-color: var(--color-1);">💸 罰款：</strong></p>
+      <p>&nbsp;</p>
+      <p><strong>⌚ 判刑：</strong></p>
+      <p>-----</p>
+  </div>
+    `;
       $("#manage-incidents-title-input").val(
         "Name - Charge - " + $(".date").html()
       );
@@ -811,7 +811,7 @@ $(document).ready(() => {
       $(".manage-incidents-title-holder").empty();
       $(".manage-incidents-title-holder").prepend(
         `
-            <div class="manage-incidents-title">Manage Incident</div>
+            <div class="manage-incidents-title">事件管理</div>
             <div class="manage-incidents-create"> <span class="fas fa-plus" style="margin-top: 3.5px;"></span></div>
             <div class="manage-incidents-save"><span class="fas fa-save" style="margin-top: 3.5px;"></span></div>
             `
@@ -901,7 +901,7 @@ $(document).ready(() => {
       {
         className: "search-vehicle",
         icon: "fas fa-car",
-        text: "Search Vehicle",
+        text: "搜尋車輛",
         info: $(this).data("plate"),
         status: "",
       },
@@ -925,7 +925,7 @@ $(document).ready(() => {
       {
         className: "make-waypoint",
         icon: "fas fa-map-pin",
-        text: "Make Waypoint",
+        text: "設定路徑",
         info: $(this).data("location"),
         status: "",
       },
@@ -961,21 +961,21 @@ $(document).ready(() => {
         {
           className: "remove-image",
           icon: "fas fa-times",
-          text: "Remove Image",
+          text: "刪除照片",
           info: $(this).attr("src"),
           status: "",
         },
         {
           className: "expand-image",
           icon: "fas fa-expand",
-          text: "Expand Image",
+          text: "展開照片",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
         {
           className: "copy-image-link",
           icon: "fa-regular fa-copy",
-          text: "Copy Image Link",
+          text: "複製照片網址",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
@@ -1011,7 +1011,7 @@ $(document).ready(() => {
         {
           className: "revoke-licence",
           icon: "fas fa-times",
-          text: "Revoke License",
+          text: "撤銷許可證",
           info: info,
           status: status,
         },
@@ -1021,7 +1021,7 @@ $(document).ready(() => {
         {
           className: "give-licence",
           icon: "fas fa-check",
-          text: "Give License",
+          text: "給予許可證",
           info: info,
           status: status,
         },
@@ -1355,27 +1355,27 @@ $(document).ready(() => {
       if ($(".badge-logo").attr("src") == "img/ems_badge.webp") {
         template = `
         <div style="color: white;">
-            <p><strong>📝 ICU Room #: [ # ]</strong></p>
-            <p><strong>Report ID: [ Report ID ]</strong></p>
-            <p><em><br></em></p>
-            <p><strong>🧍Time Admitted: [ Date and Time Here ]</strong>&nbsp;</p>
-            <p><strong>Surgery: [Yes/No]</strong></p>
-            <p><strong>Injuries/Ailments:</strong></p>
-            <p><em>· [Enter List Of Injuries Here]</em><br></p>
-            <p>&nbsp;</p>
-            <p>-----</p>
-            <p><strong style="background-color: var(--color-1);">Additional Attending:</strong><br></p>
-            <p><em>· [ List Any Other Staff Here ]</em></p>
-            <p><strong style="background-color: var(--color-1);">🧑‍🤝‍🧑 Additional Emergency Contacts:</strong><br></p>
-            <p><em>· [ Name And Number ]</em></p>
-            <p><strong style="background-color: var(--color-1);">Notes:</strong><br></p>
-            <p><em>· [Additional Notes Here]</em></p>
-            <p>-----</p>
-        </div>
+        <p><strong>📝 加護病房號碼：[ # ]</strong></p>
+        <p><strong>報告 ID：[ 報告 ID ]</strong></p>
+        <p><em><br></em></p>
+        <p><strong>🧍入院時間：[ 此處填寫日期和時間 ]</strong>&nbsp;</p>
+        <p><strong>手術：[是/否]</strong></p>
+        <p><strong>受傷/疾病：</strong></p>
+        <p><em>· [此處填寫受傷列表]</em><br></p>
+        <p>&nbsp;</p>
+        <p>-----</p>
+        <p><strong style="background-color: var(--color-1);">額外參與：</strong><br></p>
+        <p><em>· [ 此處列出任何其他工作人員 ]</em></p>
+        <p><strong style="background-color: var(--color-1);">🧑‍🤝‍🧑 额外緊急聯絡人：</strong><br></p>
+        <p><em>· [ 名稱和號碼 ]</em></p>
+        <p><strong style="background-color: var(--color-1);">筆記：</strong><br></p>
+        <p><em>· [此處填寫附加筆記]</em></p>
+        <p>-----</p>
+    </div>
     `;
       }
       $(".manage-bolos-editing-title").html(
-        "You are currently creating a new BOLO"
+        "你正在建立一個新的 BOLO"
       );
       $(".manage-bolos-input-title").val("");
       $(".manage-bolos-input-plate").val("");
@@ -1436,7 +1436,7 @@ $(document).ready(() => {
     function () {
       let existing = !(
         $(".manage-bolos-editing-title").html() ==
-        "You are currently creating a new BOLO"
+        "你正在建立一個新的 BOLO"
       );
       let id = $(".manage-bolos-editing-title").data("id");
       let title = $("#bolotitle").val();
@@ -1500,21 +1500,21 @@ $(document).ready(() => {
         {
           className: "remove-image-incident",
           icon: "fas fa-times",
-          text: "Remove Image",
+          text: "刪除照片",
           info: $(this).attr("src"),
           status: "",
         },
         {
           className: "expand-image",
           icon: "fas fa-expand",
-          text: "Expand Image",
+          text: "展開照片",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
         {
           className: "copy-image-link",
           icon: "fa-regular fa-copy",
-          text: "Copy Image Link",
+          text: "複製照片網址",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
@@ -1705,7 +1705,7 @@ $(document).ready(() => {
       {
         className: "bolo-delete",
         icon: "fas fa-times",
-        text: "Delete Bolo",
+        text: "刪除 Bolo",
         info: $(this).data("id"),
         status: "",
       },
@@ -1715,7 +1715,7 @@ $(document).ready(() => {
         {
           className: "bolo-delete",
           icon: "fas fa-times",
-          text: "Delete Check-In",
+          text: "刪除打卡",
           info: $(this).data("id"),
           status: "",
         },
@@ -1731,7 +1731,7 @@ $(document).ready(() => {
         {
           className: "add-charge",
           icon: "fas fa-check",
-          text: "Modify Charges",
+          text: "修改罪名",
           info: $(this).data("name"),
           status: "",
         },
@@ -1843,7 +1843,7 @@ $(document).ready(() => {
       let args = [
           {
             className: "incidents-remove-tag",
-            text: "Remove Tag",
+            text: "刪除標籤",
             info: descr,
             status: "",
           },
@@ -1877,21 +1877,21 @@ $(document).ready(() => {
         {
           className: "bolo-remove-image",
           icon: "fas fa-times",
-          text: "Remove Image",
+          text: "刪除照片",
           info: $(this).attr("src"),
           status: "",
         },
         {
           className: "expand-image",
           icon: "fas fa-expand",
-          text: "Expand Image",
+          text: "展開照片",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
         {
           className: "copy-image-link",
           icon: "fa-regular fa-copy",
-          text: "Copy Image Link",
+          text: "複製照片網址",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
@@ -2015,7 +2015,7 @@ $(document).ready(() => {
         {
           className: "associated-incidents-remove-tag",
           icon: "fas fa-times",
-          text: "Remove Tag",
+          text: "刪除標籤",
           info: $(this).html(),
           status: $(this).data("id"),
         },
@@ -2068,25 +2068,25 @@ $(document).ready(() => {
             <div class="associated-incidents-user-container" data-id="${$(this).data("cid")}">
                 <div class="associated-incidents-user-title">${$(this).data("info")}</div>
                 <div class="associated-incidents-user-tags-holder">
-                    <div class="associated-incidents-user-tag red-tag" data-id="${$(this).data("cid")}">Warrant</div>
-                    <div class="associated-incidents-user-tag red-tag" data-id="${$(this).data("cid")}">Guilty</div>
-                    <div class="associated-incidents-user-tag red-tag" data-id="${$(this).data("cid")}">Processed</div>
-                    <div class="associated-incidents-user-tag red-tag" data-id="${$(this).data("cid")}">Associated</div>
+                    <div class="associated-incidents-user-tag red-tag" data-id="${$(this).data("cid")}">逮捕令</div>
+                    <div class="associated-incidents-user-tag red-tag" data-id="${$(this).data("cid")}">有罪</div>
+                    <div class="associated-incidents-user-tag red-tag" data-id="${$(this).data("cid")}">已處理</div>
+                    <div class="associated-incidents-user-tag red-tag" data-id="${$(this).data("cid")}">相關</div>
                 </div>
-                <div class="modify-charges-label"><span class="fas fa-solid fa-info"></span> Right click below to add and/or modify charges.</div>
+                <div class="modify-charges-label"><span class="fas fa-solid fa-info"></span> 在下方右擊以新增或修改罪名</div>
                 <div class="associated-incidents-user-holder" data-name="${$(this).data("cid")}"></div>
-                <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">Recommended Fine</div>
+                <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">建議罰款</div>
                 <div class="associated-incidents-fine-input" data-id="${$(this).data("cid")}"><img src="img/h7S5f9J.webp"> <input disabled placeholder="0" class="fine-recommended-amount" id="fine-recommended-amount" data-id="${$(this).data("cid")}" type="number"></div>
-                <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">Recommended Sentence</div>
+                <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">建議刑期</div>
                 <div class="associated-incidents-sentence-input" data-id="${$(this).data("cid")}"><img src="img/9Xn6xXK.webp"> <input disabled placeholder="0" class="sentence-recommended-amount" id="sentence-recommended-amount" data-id="${$(this).data("cid")}" type="number"></div>
-                <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">Fine</div>
-                <div class="associated-incidents-fine-input" data-id="${$(this).data("cid")}"><img src="img/h7S5f9J.webp"> <input placeholder="Enter fine here..." value="0" class="fine-amount" data-id="${$(this).data("cid")}" type="number"></div>
-                <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">Sentence</div>
-                <div class="associated-incidents-sentence-input" data-id="${$(this).data("cid")}"><img src="img/9Xn6xXK.webp"> <input placeholder="Enter months here..." value="0" class="sentence-amount" data-id="${$(this).data("cid")}" type="number"></div>
+                <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">罰款</div>
+                <div class="associated-incidents-fine-input" data-id="${$(this).data("cid")}"><img src="img/h7S5f9J.webp"> <input placeholder="在此輸入罰款..." value="0" class="fine-amount" data-id="${$(this).data("cid")}" type="number"></div>
+                <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">刑期</div>
+                <div class="associated-incidents-sentence-input" data-id="${$(this).data("cid")}"><img src="img/9Xn6xXK.webp"> <input placeholder="在此輸入月份..." value="0" class="sentence-amount" data-id="${$(this).data("cid")}" type="number"></div>
                 <div class="associated-incidents-controls" data-id="${$(this).data("cid")}">
-                    <div id="jail-button" class="control-button" data-id="${$(this).data("cid")}"><span class="fa-solid fa-building-columns" style="margin-top: 3.5px;"></span> Jail</div>
-                    <div id="fine-button" class="control-button" data-id="${$(this).data("cid")}"><span class="fa-solid fa-file-invoice-dollar" style="margin-top: 3.5px;"></span> Fine</div>
-                    ${canSendToCommunityService ? `<div id="community-service-button" class="control-button" data-id="${$(this).data("cid")}"> <span class="fa-solid fa-person-digging" style="margin-top: 3.5px;"></span>Community Service</div>` : ''}
+                    <div id="jail-button" class="control-button" data-id="${$(this).data("cid")}"><span class="fa-solid fa-building-columns" style="margin-top: 3.5px;"></span> 送監獄</div>
+                    <div id="fine-button" class="control-button" data-id="${$(this).data("cid")}"><span class="fa-solid fa-file-invoice-dollar" style="margin-top: 3.5px;"></span> 開罰單</div>
+                    ${canSendToCommunityService ? `<div id="community-service-button" class="control-button" data-id="${$(this).data("cid")}"> <span class="fa-solid fa-person-digging" style="margin-top: 3.5px;"></span>勞動服務</div>` : ''}
                 </div>
             </div>
           `
@@ -2109,7 +2109,7 @@ $(document).ready(() => {
       {
         className: "incidents-remove-tag",
         icon: "fas fa-times",
-        text: "Remove Tag",
+        text: "刪除標籤",
         info: $(this).html(),
         status: "",
       },
@@ -2134,7 +2134,7 @@ $(document).ready(() => {
         {
           className: "remove-tag",
           icon: "fas fa-times",
-          text: "Remove Tag",
+          text: "刪除標籤",
           info: $(this).html(),
           status: "",
         },
@@ -2177,7 +2177,7 @@ $(document).ready(() => {
       {
         className: "incidents-remove-normal-tag",
         icon: "fas fa-times",
-        text: "Remove Tag",
+        text: "刪除標籤",
         info: $(this).html(),
         status: "",
       },
@@ -2388,21 +2388,21 @@ $(document).ready(() => {
         {
           className: "reports-remove-image",
           icon: "fas fa-times",
-          text: "Remove Image",
+          text: "刪除照片",
           info: $(this).attr("src"),
           status: "",
         },
         {
           className: "expand-image",
           icon: "fas fa-expand",
-          text: "Expand Image",
+          text: "展開照片",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
         {
           className: "copy-image-link",
           icon: "fa-regular fa-copy",
-          text: "Copy Image Link",
+          text: "複製照片網址",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
@@ -2435,26 +2435,26 @@ $(document).ready(() => {
       if ($(".badge-logo").attr("src") == "img/ems_badge.webp") {
         template = `
     <div style="color: white;">
-        <p><strong>Submitted to ICU?: [Yes/No]</strong></p>
-        <p><strong>Incident Report:</strong></p>
-        <p><em>· [ Brief summary of what happened and who did what while on scene. Note anything that stood out about the scene as well as what was done to treat the patient ]</em></p>
-        <p><strong>List of Injuries:</strong></p>
-        <p><em>· [ State what injury or injuries occurred ]</em></p>
-        <p><strong>Surgical Report:</strong></p>
-        <p><em>· [ Full report on what was done in surgery, list any complications or anything that was found while in operation. Note who was attending and what they did during the surgery. At the end of the report be sure to note the state of the patient after ]</em></p>
+        <p><strong>提交至加護病房？: [是/否]</strong></p>
+        <p><strong>事故報告:</strong></p>
+        <p><em>· [  簡單摘要發生了什麼以及誰在現場做了什麼。注意任何引人注目的現場情況，以及對病人進行的治療 ]</em></p>
+        <p><strong>受傷列表:</strong></p>
+        <p><em>· [ 說明發生了什麼傷害或傷害 ]</em></p>
+        <p><strong>手術報告:</strong></p>
+        <p><em>· [ 關於手術過程的完整報告，列出任何並發症或在手術中發現的任何事情。注意參加手術的人員以及他們在手術期間做了什麼。在報告的最後一定要記下病人的狀態 ]</em></p>
         <p>-----</p>
-        <p><strong>Attending:</strong></p>
-        <p><em>· [ List Any Attending Here ]</em></p>
+        <p><strong>出席者:</strong></p>
+        <p><em>· [ 在這裡列出任何參加的人 ]</em></p>
         <p><strong>Medications Applied:</strong></p>
-        <p><em>· [ List Any Attending Here ]</em></p>
+        <p><em>· [ 在這裡列出任何參加的人 ]</em></p>
         <p>-----</p>
         <br>
-        <p><strong>Notes:</strong></p>
-        <p><em>[ Additional Notes Here ]</em></p>
+        <p><strong>備註:</strong></p>
+        <p><em>[ 附加說明在這裡 ]</em></p>
     </div>
 `;}
       $(".manage-reports-editing-title").html(
-        "You are currently creating a new report"
+        "你正在建立新的報告"
       );
       $(".manage-reports-input-title").val("");
       $(".manage-reports-input-type").val("");
@@ -2631,7 +2631,7 @@ $(document).ready(() => {
 
                                 <div style="display: flex; flex-direction: column; margin-top: 2.5px; margin-left: 5px; width: 100%; padding: 5px;">
                                 <div style="display: flex; flex-direction: column;">
-                                    <div class="profile-item-title">No Vehicles Matching that search</div>
+                                    <div class="profile-item-title">找不到符合該搜尋的車輛</div>
                                     </div>
                                     <div class="profile-bottom-info">
                                     </div>
@@ -2677,14 +2677,14 @@ $(document).ready(() => {
                                 <div class="dmv-item-title">${value.model}</div>
                                     <div class="dmv-tags">
                                         <div class="dmv-tag ${paint}-color">${value.colorName}</div>
-                                        <div class="dmv-tag ${impound}">Impound</div>
+                                        <div class="dmv-tag ${impound}">扣押</div>
                                         <div class="dmv-tag ${bolo}">BOLO</div>
-                                        <div class="dmv-tag ${stolen}">Stolen</div>
+                                        <div class="dmv-tag ${stolen}">遭竊</div>
                                         <div class="dmv-tag ${codefive}">Code 5</div>
                                     </div>
                                 </div>
                                 <div class="dmv-bottom-info">
-                                    <div class="dmv-id">Plate: ${value.plate} · Owner: ${value.owner}</div>
+                                    <div class="dmv-id">車牌: ${value.plate} · 車主: ${value.owner}</div>
                                 </div>
                             </div>
                         </div>
@@ -2805,7 +2805,7 @@ $(document).ready(() => {
           {
             className: "mark-code-5",
             icon: "fas fa-check",
-            text: "Mark as Code 5",
+            text: "標記為 Code 5",
             info: plate,
             status: "",
           },
@@ -2815,7 +2815,7 @@ $(document).ready(() => {
           {
             className: "remove-code-5",
             icon: "fas fa-times",
-            text: "Remove Code 5 Status",
+            text: "刪除 Code 5 狀態",
             info: plate,
             status: "",
           },
@@ -2849,7 +2849,7 @@ $(document).ready(() => {
           {
             className: "mark-stolen",
             icon: "fas fa-check",
-            text: "Mark as Stolen",
+            text: "標記為遭竊",
             info: plate,
             status: "",
           },
@@ -2859,7 +2859,7 @@ $(document).ready(() => {
           {
             className: "remove-stolen",
             icon: "fas fa-times",
-            text: "Remove Code 5 Status",
+            text: "刪除遭竊狀態",
             info: plate,
             status: "",
           },
@@ -3007,7 +3007,7 @@ $(document).ready(() => {
           {
             className: "impound-vehicle",
             icon: "fas fa-check",
-            text: "State Impound",
+            text: "扣押",
             info: plate,
             status: "",
           },
@@ -3017,14 +3017,14 @@ $(document).ready(() => {
           {
             className: "remove-impound",
             icon: "fas fa-times",
-            text: "Unimpound Vehicle",
+            text: "解除扣押",
             info: plate,
             status: "",
           },
           {
             className: "status-impound",
             icon: "fas fa-info-circle",
-            text: "View Impound Status",
+            text: "查看扣押狀態",
             info: plate,
             status: "",
           },
@@ -3100,7 +3100,7 @@ $(document).ready(() => {
 
                                 <div style="display: flex; flex-direction: column; margin-top: 2.5px; margin-left: 5px; width: 100%; padding: 5px;">
                                 <div style="display: flex; flex-direction: column;">
-                                    <div class="profile-item-title">No Weapons Matching that search</div>
+                                    <div class="profile-item-title">找不到符合該搜尋的武器</div>
                                     </div>
                                     <div class="profile-bottom-info">
                                     </div>
@@ -3125,7 +3125,7 @@ $(document).ready(() => {
 
                                 </div>
                                 <div class="weapons-bottom-info">
-                                  <div class="weapons-id">Serial Number: ${value.serial} · Owner: ${value.owner} · ID: ${value.id}</div>
+                                  <div class="weapons-id">序列號: ${value.serial} · 持有人: ${value.owner} · ID: ${value.id}</div>
                                 </div>
                             </div>
                         </div>
@@ -3262,7 +3262,7 @@ $(document).ready(() => {
       {
         className: "view-incident2",
         icon: "fas fa-search",
-        text: `View Incident #${$(this).data("id")}`,
+        text: `查看事件 #${$(this).data("id")}`,
         info: $(this).data("id"),
         status: "",
       },
@@ -3309,14 +3309,14 @@ $(document).ready(() => {
       {
         className: "view-profile",
         icon: "far fa-eye",
-        text: "View Profile",
+        text: "查看個人資料",
         info: $(this).data("cid"),
         status: "",
       },
       {
         className: "view-incident",
         icon: "fas fa-search",
-        text: `View Incident #${$(this).data("id")}`,
+        text: `查看事件 #${$(this).data("id")}`,
         info: $(this).data("id"),
         status: "",
       },
@@ -3392,28 +3392,28 @@ $(document).ready(() => {
         {
           className: "toggle-duty",
           icon: "fas fa-thumbtack",
-          text: "Toggle Duty",
+          text: "切換上下班",
           info: cid,
           status: "",
         },
         {
           className: "set-callsign",
           icon: "far fa-id-badge",
-          text: "Set Callsign",
+          text: "設定呼號",
           info: cid,
           status: "",
         },
         {
           className: "set-radio",
           icon: "fas fa-broadcast-tower",
-          text: "Set Radio",
+          text: "設定無線電",
           info: cid,
           status: "",
         },
         {
           className: "set-waypoint",
           icon: "fas fa-map-marker-alt",
-          text: "Set Waypoint",
+          text: "設定路徑",
           info: cid,
           status: "",
         },
@@ -3522,42 +3522,42 @@ $(document).ready(() => {
             {
               className: "respond-call",
               icon: "fas fa-reply",
-              text: "Respond to Call",
+              text: "回應呼叫",
               info: callId,
               status: "",
             },
             {
               className: "attached-units",
               icon: "fas fa-link",
-              text: "Attached Units",
+              text: "響應單位",
               info: callId,
               status: "",
             },
             {
               className: "call-detach",
               icon: "fas fa-sign-out-alt",
-              text: "Detach",
+              text: "退出響應",
               info: callId,
               status: "",
             },
             {
               className: "call-attach",
               icon: "fas fa-sign-in-alt",
-              text: "Respond",
+              text: "響應事件",
               info: callId,
               status: "",
             },
             {
               className: "Set-Waypoint",
               icon: "fas fa-map-marker-alt",
-              text: "Set Waypoint",
+              text: "設定路徑",
               info: callId,
               status: "",
             },
             {
               className: "remove-blip",
               icon: "fa-solid fa-circle-minus",
-              text: "Remove Blip",
+              text: "移除標點",
               info: callId,
               status: "",
             },
@@ -3567,35 +3567,35 @@ $(document).ready(() => {
             {
               className: "attached-units",
               icon: "fas fa-link",
-              text: "Attached Units",
+              text: "響應單位",
               info: callId,
               status: "",
             },
             {
               className: "call-detach",
               icon: "fas fa-sign-out-alt",
-              text: "Detach",
+              text: "退出",
               info: callId,
               status: "",
             },
             {
               className: "call-attach",
               icon: "fas fa-sign-in-alt",
-              text: "Respond",
+              text: "響應事件",
               info: callId,
               status: "",
             },
             {
               className: "Set-Waypoint",
               icon: "fas fa-map-marker-alt",
-              text: "Set Waypoint",
+              text: "設定路徑",
               info: callId,
               status: "",
             },
             {
               className: "remove-blip",
               icon: "fa-solid fa-circle-minus",
-              text: "Remove Blip",
+              text: "移除標點",
               info: callId,
               status: "",
             },
@@ -3640,7 +3640,7 @@ $(document).ready(() => {
           {
             className: "set-waypoint",
             icon: "fas fa-map-marker-alt",
-            text: "Set Waypoint",
+            text: "設定路徑",
             info: cid,
             status: "",
           },
@@ -3676,7 +3676,7 @@ $(document).ready(() => {
         {
           className: "dispatch-reply",
           icon: "fas fa-reply",
-          text: "Reply",
+          text: "回覆",
           info: mySubString,
           status: "",
         },
@@ -4030,26 +4030,26 @@ $(document).ready(() => {
           }
         $(".bolo-nav-item").html("BOLOs");
         $(".bolos-search-title").html("Bolos");
-        $("#bolos-search-input").attr("placeholder", "Search Bolo...");
-        $(".manage-bolos-title").html("Manage Bolo");
+        $("#bolos-search-input").attr("placeholder", "搜尋 Bolo...");
+        $(".manage-bolos-title").html("管理 Bolo");
         $(".manage-bolos-editing-title").html(
-          "You are currently creating a new BOLO"
+          "你正在建立一個新的 BOLO"
         );
-        $(".boloplate-title").html("Plate");
-        $(".boloowner-title").html("Owner");
-        $(".boloindividual-title").html("Individual");
-        $("#boloplate").attr("placeholder", "Place plate here...");
+        $(".boloplate-title").html("車牌");
+        $(".boloowner-title").html("車主");
+        $(".boloindividual-title").html("個人");
+        $("#boloplate").attr("placeholder", "在此輸入車牌...");
         $("#bolodetail").attr(
           "placeholder",
-          "Bolo detail goes here..."
+          "在此輸入Bolo詳細資訊..."
         );
         $("#boloowner").attr(
           "placeholder",
-          "Place vehicle owner here..."
+          "在此輸入車輛所有者..."
         );
         $("#boloindividual").attr(
           "placeholder",
-          "Place invidivual here..."
+          "在此輸入個人姓名..."
         );
         $("#home-warrants-container").fadeIn(0);
         $("#home-reports-container").fadeOut(0);
@@ -4060,15 +4060,15 @@ $(document).ready(() => {
         $(".weapons-nav-item").show()
         $(".cams-nav-item").show();
         $(".map-nav-item").show();
-        $(".dispatch-title-ofsomesort").html("Dispatch");
+        $(".dispatch-title-ofsomesort").html("勤指中心");
         $(".dispatch-comms-container").fadeIn(0);
         $(".manage-profile-name-input-1").attr("readonly", true);
         $(".manage-profile-name-input-2").attr("readonly", true);
         $("#reports-officers-involved-tag-title").html(
-          "Officers Involved"
+          "參與的警員"
         );
         $("#bolos-officers-involved-tag-title").html(
-          "Officers Involved"
+          "參與的警員"
         );
         $(".roster-iframe").attr("src", rosterLink);
         $(".sop-iframe").attr("src", sopLink);
@@ -4494,9 +4494,9 @@ window.addEventListener("message", function (event) {
         }
 
         if (value["gender"]) {
-          let gender = "Male";
+          let gender = "男性";
           if (value["gender"] == 0 || value["gender"] == 2) {
-            gender = "Female";
+            gender = "女性";
           }
           DispatchItem += `<div class="call-bottom-info"><span class="fas fa-genderless"></span>${gender}</div>`;
         }
@@ -4672,7 +4672,7 @@ window.addEventListener("message", function (event) {
           `<div class="incidents-item" data-id="${value.id}">
                     <div class="incidents-top-holder">
                         <div class="incidents-item-title">${value.title}</div>
-                        <div class="incedent-report-name">Incident Report</div>
+                        <div class="incedent-report-name">事件報告</div>
                     </div>
                     <div class="incidents-bottom-holder">
                         <div class="incedent-report-id">ID: ${value.id}</div>
@@ -4700,7 +4700,7 @@ window.addEventListener("message", function (event) {
           {
             className: "incidents-delete",
             icon: "fas fa-times",
-            text: "Delete Incidents",
+            text: "刪除事件",
             info: $(this).data("id"),
             status: "",
           },
@@ -4823,7 +4823,7 @@ window.addEventListener("message", function (event) {
       if (PoliceJobs[playerJob] !== undefined || AmbulanceJobs[playerJob] !== undefined) {
         $(".manage-incidents-title-holder").prepend(
           `
-            <div class="manage-incidents-title">Manage Incident</div>
+            <div class="manage-incidents-title">事件管理</div>
             <div class="manage-incidents-create"> <span class="fas fa-plus" style="margin-top: 3.5px;"></span></div>
             <div class="manage-incidents-save"><span class="fas fa-save" style="margin-top: 3.5px;"></span></div>
             `
@@ -4833,7 +4833,7 @@ window.addEventListener("message", function (event) {
       } else if (DojJobs[playerJob] !== undefined) {
         $(".manage-incidents-title-holder").prepend(
           `
-            <div class="manage-incidents-title">Manage Incident</div>
+            <div class="manage-incidents-title">事件管理</div>
             `
         );
         $(".manage-incidents-title").css("width", "95%");
@@ -4868,18 +4868,18 @@ window.addEventListener("message", function (event) {
         // If the associated field is not checked, then populate the recommended fine and sentence fields
         const associatedIncidentsContainer = (value.associated != 1) && `
           <div class="associated-incidents-user-holder" data-name="${cid}" ></div>
-          <div class="manage-incidents-title-tag" data-id="${cid}">Recommended Fine</div>
+          <div class="manage-incidents-title-tag" data-id="${cid}">建議罰款</div>
           <div class="associated-incidents-fine-input" data-id="${cid}"><img src="img/h7S5f9J.webp"> <input placeholder="0" disabled class="fine-recommended-amount" id="fine-recommended-amount" data-id="${cid}" type="number"></div>
-          <div class="manage-incidents-title-tag" data-id="${cid}">Recommended Sentence</div>
+          <div class="manage-incidents-title-tag" data-id="${cid}">建議刑期</div>
           <div class="associated-incidents-sentence-input" data-id="${cid}"><img src="img/9Xn6xXK.webp"> <input placeholder="0" disabled class="sentence-recommended-amount" id="sentence-recommended-amount" data-id="${cid}" type="number"></div>
           <div class="manage-incidents-title-tag" data-id="${cid}">Fine</div>
-          <div class="associated-incidents-fine-input" data-id="${cid}"><img src="img/h7S5f9J.webp"> <input placeholder="Enter fine here..." value="0" class="fine-amount" data-id="${cid}" type="number"></div>
+          <div class="associated-incidents-fine-input" data-id="${cid}"><img src="img/h7S5f9J.webp"> <input placeholder="在此輸入罰款..." value="0" class="fine-amount" data-id="${cid}" type="number"></div>
           <div class="manage-incidents-title-tag" data-id="${cid}">Sentence</div>
-          <div class="associated-incidents-sentence-input" data-id="${cid}"><img src="img/9Xn6xXK.webp"> <input placeholder="Enter months here..." value="0" class="sentence-amount" data-id="${cid}" type="number"></div>
+          <div class="associated-incidents-sentence-input" data-id="${cid}"><img src="img/9Xn6xXK.webp"> <input placeholder="在此輸入月份..." value="0" class="sentence-amount" data-id="${cid}" type="number"></div>
           <div class="associated-incidents-controls" data-id="${cid}">
-            <div id="jail-button" class="control-button" data-id="${cid}"><span class="fa-solid fa-building-columns" style="margin-top: 3.5px;"></span> Jail</div>
-            <div id="fine-button" class="control-button" data-id="${cid}"><span class="fa-solid fa-file-invoice-dollar" style="margin-top: 3.5px;"></span> Fine</div>
-            ${canSendToCommunityService ? `<div id="community-service-button" class="control-button" data-id="${cid}"> <span class="fa-solid fa-person-digging" style="margin-top: 3.5px;"></span>Community Service</div>` : ''}
+            <div id="jail-button" class="control-button" data-id="${cid}"><span class="fa-solid fa-building-columns" style="margin-top: 3.5px;"></span> 送監獄</div>
+            <div id="fine-button" class="control-button" data-id="${cid}"><span class="fa-solid fa-file-invoice-dollar" style="margin-top: 3.5px;"></span> 開罰單</div>
+            ${canSendToCommunityService ? `<div id="community-service-button" class="control-button" data-id="${cid}"> <span class="fa-solid fa-person-digging" style="margin-top: 3.5px;"></span>勞動服務</div>` : ''}
           </div>
         `;
 
@@ -4887,12 +4887,12 @@ window.addEventListener("message", function (event) {
           `<div class="associated-incidents-user-container" data-id="${cid}">
               <div class="associated-incidents-user-title">${value.name} (#${cid})</div>
               <div class="associated-incidents-user-tags-holder">
-                  <div class="associated-incidents-user-tag ${warrantTag}" data-id="${cid}">Warrant</div>
-                  <div class="associated-incidents-user-tag ${guiltyTag}" data-id="${cid}">Guilty</div>
-                  <div class="associated-incidents-user-tag ${processedTag}" data-id="${cid}">Processed</div>
-                  <div class="associated-incidents-user-tag ${associatedTag}" data-id="${cid}">Associated</div>
+                  <div class="associated-incidents-user-tag ${warrantTag}" data-id="${cid}">逮捕令</div>
+                  <div class="associated-incidents-user-tag ${guiltyTag}" data-id="${cid}">有罪</div>
+                  <div class="associated-incidents-user-tag ${processedTag}" data-id="${cid}">已處理</div>
+                  <div class="associated-incidents-user-tag ${associatedTag}" data-id="${cid}">相關</div>
               </div>
-              <div class="modify-charges-label"><span class="fas fa-solid fa-info"></span> Right click below to add and/or modify charges.</div>
+              <div class="modify-charges-label"><span class="fas fa-solid fa-info"></span> 在下方右擊以新增和/或修改罪刑</div>
               ${associatedIncidentsContainer}
           </div>`
         );
@@ -4933,9 +4933,9 @@ window.addEventListener("message", function (event) {
             <div class="incidents-person-search-item" data-info="${name} (#${value.id})" data-cid="${value.id}" data-name="${name}" data-callsign="${value.callsign}">
                 <img src="${value.profilepic}" class="incidents-person-search-item-pfp">
                 <div class="incidents-person-search-item-right">
-                    <div class="incidents-person-search-item-right-cid-title">Citizen ID</div>
+                    <div class="incidents-person-search-item-right-cid-title">身分證字號</div>
                     <div class="incidents-person-search-item-right-cid-input"><span class="fas fa-id-card"></span> ${value.id}</div>
-                    <div class="incidents-person-search-item-right-name-title">Name</div>
+                    <div class="incidents-person-search-item-right-name-title">姓名</div>
                     <div class="incidents-person-search-item-right-name-input"><span class="fas fa-user"></span> ${name}</div>
                 </div>
             </div>
@@ -5583,7 +5583,7 @@ function searchProfilesResults(result) {
 
                           <div style="display: flex; flex-direction: column; margin-top: 2.5px; margin-left: 5px; width: 100%; padding: 5px;">
                           <div style="display: flex; flex-direction: column;">
-                              <div class="profile-item-title">No Users Matching that search</div>
+                              <div class="profile-item-title">沒有符合該搜尋的人物</div>
                               </div>
                               <div class="profile-bottom-info">
                               </div>
@@ -5663,12 +5663,12 @@ function searchProfilesResults(result) {
                 ${licences}
             </div>
             <div class="profile-criminal-tags">
-                <span class="license-tag ${warrant}">${value.warrant ? "Active" : "No"} Warrant</span>
-                <span class="license-tag ${convictions}">${value.convictions} Convictions </span>
+                <span class="license-tag ${warrant}">${value.warrant ? "有" : "無"} 逮捕令</span>
+                <span class="license-tag ${convictions}">${value.convictions} 項前科 </span>
             </div>
         </div>
         <div class="profile-bottom-info">
-            <div class="profile-id"><span class="fas fa-id-card"></span> Citizen ID: ${value.citizenid}</div>&nbsp;
+            <div class="profile-id"><span class="fas fa-id-card"></span> 身分證字號: ${value.citizenid}</div>&nbsp;
         </div>
         </div>
     </div>

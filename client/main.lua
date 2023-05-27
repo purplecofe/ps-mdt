@@ -1134,3 +1134,11 @@ if Config.UseWolfknightRadar == true then
         end
     end)
 end
+
+exports.ox_inventory:displayMetadata({
+    citizenId = '身份證字號',
+    fine = '罰款',
+    date = '日期',
+    incidentId = '案件編號',
+    officer = '承辦警員',
+})

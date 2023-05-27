@@ -8,11 +8,11 @@ Config.UseCQCMugshot = true
 Config.MugPhotos = 1
 
 -- Images for mug shots will be uploaded here. Add a Discord webhook. 
-Config.MugShotWebhook = ''
+Config.MugShotWebhook = 'https://discord.com/api/webhooks/1104331388611723274/jvc-OdQdfyIyyOSC6h0cK7s04kwB1JbrGHirSWeukmStvYOR9CO8p2bg4Icx1JTMi09J'
 
 -- Clock-in notifications for duty. Add a Discord webhook.
 -- Command /mdtleaderboard, will display top players per clock-in hours.
-Config.ClockinWebhook = ''
+Config.ClockinWebhook = 'https://discord.com/api/webhooks/1104331475790336050/4e769oivacS0dT0x4ajGYNqe3G4hqIVIKPyGfkrBP_4ww0p1_jdPJatOMwY8qn1UfFFI'
 
 -- If set to true = Fine gets automatically removed from bank automatically charging the player.
 -- If set to false = The fine gets sent as an Invoice to their phone and it us to the player to pay for it, can remain unpaid and ignored.
@@ -23,7 +23,7 @@ Config.BillVariation = true
 -- However, if you're using a different inventory system, please refer to the "Inventory Edit | Automatic Add Weapons with images" section in ps-mdt's README.
 Config.InventoryForWeaponsImages = "lj-inventory"
 
--- "LegacyFuel", "lj-fuel", "ps-fuel"
+-- "cdn-fuel", "lj-fuel", "ps-fuel"
 Config.Fuel = "ps-fuel"
 
 -- Google Docs Link
@@ -84,7 +84,7 @@ Config.ImpoundLocations = {
 
 -- Support for Wraith ARS 2X. 
 
-Config.UseWolfknightRadar = false
+Config.UseWolfknightRadar = true
 Config.WolfknightNotifyTime = 5000 -- How long the notification displays for in milliseconds (30000 = 30 seconds)
 
 -- IMPORTANT: To avoid making excessive database queries, modify this config to true 'CONFIG.use_sonorancad = true' setting in the configuration file located at 'wk_wars2x/config.lua'. 
