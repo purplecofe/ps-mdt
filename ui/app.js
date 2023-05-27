@@ -671,16 +671,16 @@ $(document).ready(() => {
             .each(function (index) {
               if ($(this).data("id") == cid) {
                 if ($(this).hasClass("green-tag")) {
-                  if ($(this).text() == "Guilty") {
+                  if ($(this).text() == "有罪") {
                     guilty = true;
                   }
-                  if ($(this).text() == "Warrant") {
+                  if ($(this).text() == "逮捕令") {
                     warrant = true;
                   }
-                  if ($(this).text() == "Processed") {
+                  if ($(this).text() == "已處理") {
                     processed = true;
                   }
-                  if ($(this).text() == "Associated") {
+                  if ($(this).text() == "相關") {
                     isassociated = true;
                   }
                 }
@@ -5209,10 +5209,10 @@ window.addEventListener("message", function (event) {
         stolen = "green-tag";
       }
 
-      $(".vehicle-tags").append(`<div class="vehicle-tag ${impound} impound-tag">Impound</div>`);
+      $(".vehicle-tags").append(`<div class="vehicle-tag ${impound} impound-tag">扣押</div>`);
       $(".vehicle-tags").append(`<div class="vehicle-tag ${bolo}">BOLO</div>`);
       $(".vehicle-tags").append(`<div class="vehicle-tag ${codefive} code5-tag">Code 5</div>`);
-      $(".vehicle-tags").append(`<div class="vehicle-tag ${stolen} stolen-tag">Stolen</div>`);
+      $(".vehicle-tags").append(`<div class="vehicle-tag ${stolen} stolen-tag">失竊</div>`);
       $(".vehicle-info-imageurl-input").val(table["image"]);
     } else if (eventData.type == "getWeaponData") {
       impoundChanged = false;
@@ -5316,11 +5316,11 @@ window.addEventListener("message", function (event) {
       const time = table["time"] * 1000;
 
       let localDate = new Date(time);
-      const impoundDate = localDate.toLocaleDateString("en-US", {
-        timeZone: "UTC",
+      const impoundDate = localDate.toLocaleDateString("zh-TW", {
+        timeZone: "GMT+8",
       });
-      const impoundTime = localDate.toLocaleTimeString("en-US", {
-        timeZone: "UTC",
+      const impoundTime = localDate.toLocaleTimeString("zh-TW", {
+        timeZone: "GMT+8",
       });
 
       $(".impound-plate").val(plate).attr("disabled", "disabled");

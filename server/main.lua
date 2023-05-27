@@ -1610,7 +1610,7 @@ RegisterNetEvent('mdt:server:removeImpound', function(plate, currentSelection)
 			if result and result[1] then
 				local data = result[1]
 				MySQL.update("DELETE FROM `mdt_impound` WHERE vehicleid=:vehicleid", { vehicleid = data['id'] })
-				TriggerClientEvent('police:client:TakeOutImpound', src, currentSelection)
+				-- TriggerClientEvent('police:client:TakeOutImpound', src, currentSelection)
 			end
 		end
 	end
