@@ -46,7 +46,6 @@ if Config.UseWolfknightRadar == true then
 		local bolo, title, boloId = GetBoloStatus(plate)
 		local warrant, owner, incidentId = GetWarrantStatus(plate)
 		local driversLicense = PlayerData.metadata['licences'].driver
-		local driverunlicensed = nil
 
 		if bolo == true then
 			TriggerClientEvent('QBCore:Notify', src, 'BOLO ID: '..boloId..' | Title: '..title..' | Registered Owner: '..vehicleOwner..' | Plate: '..plate, 'error', Config.WolfknightNotifyTime)
@@ -55,16 +54,13 @@ if Config.UseWolfknightRadar == true then
 			TriggerClientEvent('QBCore:Notify', src, 'WANTED - INCIDENT ID: '..incidentId..' | Registered Owner: '..owner..' | Plate: '..plate, 'error', Config.WolfknightNotifyTime)
 		end
 
-		if driversLicense == false and vehicleOwner then
+		if Config.PlateScanForDriversLicense and driversLicense == false and vehicleOwner then
 			TriggerClientEvent('QBCore:Notify', src, 'NO DRIVERS LICENCE | Registered Owner: '..vehicleOwner..' | Plate: '..plate, 'error', Config.WolfknightNotifyTime)
 		end
 
-
-		if bolo or warrant or not driversLicense then
-
-		TriggerClientEvent("wk:togglePlateLock", src, cam, true, 1)
+		if bolo or warrant or (Config.PlateScanForDriversLicense and not driversLicense) then
+			TriggerClientEvent("wk:togglePlateLock", src, cam, true, 1)
 		end
-
 	end)
 end
 
@@ -667,8 +663,8 @@ RegisterNetEvent('mdt:server:deleteWeapons', function(id)
 	if id then
 		local src = source
 		local Player = QBCore.Functions.GetPlayer(src)
-		if Config.LogPerms[Player.PlayerData.job.name] then
-			if Config.LogPerms[Player.PlayerData.job.name][Player.PlayerData.job.grade.level] then
+		if Config.RemoveWeaponsPerms[Player.PlayerData.job.name] then
+			if Config.RemoveWeaponsPerms[Player.PlayerData.job.name][Player.PlayerData.job.grade.level] then
 				local fullName = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
 				MySQL.update("DELETE FROM `mdt_weaponinfo` WHERE id=:id", { id = id })
 				TriggerEvent('mdt:server:AddLog', "A Weapon Info was deleted by "..fullName.." with the ID ("..id..")")
@@ -685,8 +681,8 @@ RegisterNetEvent('mdt:server:deleteReports', function(id)
 	if id then
 		local src = source
 		local Player = QBCore.Functions.GetPlayer(src)
-		if Config.LogPerms[Player.PlayerData.job.name] then
-			if Config.LogPerms[Player.PlayerData.job.name][Player.PlayerData.job.grade.level] then
+		if Config.RemoveReportPerms[Player.PlayerData.job.name] then
+			if Config.RemoveReportPerms[Player.PlayerData.job.name][Player.PlayerData.job.grade.level] then
 				local fullName = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
 				MySQL.update("DELETE FROM `mdt_reports` WHERE id=:id", { id = id })
 				TriggerEvent('mdt:server:AddLog', "A Report was deleted by "..fullName.." with the ID ("..id..")")
@@ -702,8 +698,8 @@ end)
 RegisterNetEvent('mdt:server:deleteIncidents', function(id)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Config.LogPerms[Player.PlayerData.job.name] then
-        if Config.LogPerms[Player.PlayerData.job.name][Player.PlayerData.job.grade.level] then
+    if Config.RemoveIncidentPerms[Player.PlayerData.job.name] then
+        if Config.RemoveIncidentPerms[Player.PlayerData.job.name][Player.PlayerData.job.grade.level] then
             local fullName = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
             MySQL.update("DELETE FROM `mdt_convictions` WHERE `linkedincident` = :id", {id = id})
             MySQL.update("UPDATE `mdt_convictions` SET `warrant` = '0' WHERE `linkedincident` = :id", {id = id}) -- Delete any outstanding warrants from incidents
@@ -1701,22 +1697,42 @@ end)
 QBCore.Functions.CreateCallback('getWeaponInfo', function(source, cb)
     local Player = QBCore.Functions.GetPlayer(source)
     local weaponInfos = {}
-    for _, item in pairs(Player.PlayerData.items) do
-        if item.type == "weapon" then
-            local invImage = ("https://cfx-nui-%s/html/images/%s"):format(Config.InventoryForWeaponsImages, item.image)
-            if invImage then
-                local weaponInfo = {
-                    serialnumber = item.info.serie,
-                    owner = Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname,
-                    weaponmodel = QBCore.Shared.Items[item.name].label,
-                    weaponurl = invImage,
-                    notes = "Self Registered",
-                    weapClass = "Class 1",
-                }
-                table.insert(weaponInfos, weaponInfo)
-            end
-        end
-    end
+	if Config.InventoryForWeaponsImages == "ox_inventory" then
+		local inv = exports.ox_inventory:GetInventoryItems(source)
+		for _, item in pairs(inv) do
+			if string.find(item.name, "WEAPON_") then
+				local invImage = ("https://cfx-nui-ox_inventory/web/images/%s.png"):format(item.name)
+				if invImage then
+					weaponInfo = {
+						serialnumber = item.metadata.serial,
+						owner = Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname,
+						weaponmodel = QBCore.Shared.Items[string.lower(item.name)].label,
+						weaponurl = invImage,
+						notes = "Self Registered",
+						weapClass = "Class 1",
+					}
+					break
+				end
+			end
+		end
+	else -- qb/lj
+		for _, item in pairs(Player.PlayerData.items) do
+			if item.type == "weapon" then
+				local invImage = ("https://cfx-nui-%s/html/images/%s"):format(Config.InventoryForWeaponsImages, item.image)
+				if invImage then
+					local weaponInfo = {
+						serialnumber = item.info.serie,
+						owner = Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname,
+						weaponmodel = QBCore.Shared.Items[item.name].label,
+						weaponurl = invImage,
+						notes = "Self Registered",
+						weapClass = "Class 1",
+					}
+					table.insert(weaponInfos, weaponInfo)
+				end
+			end
+		end	
+	end
     cb(weaponInfos)
 end)
 
@@ -1724,26 +1740,35 @@ RegisterNetEvent('mdt:server:registerweapon', function(serial, imageurl, notes, 
     exports['ps-mdt']:CreateWeaponInfo(serial, imageurl, notes, owner, weapClass, weapModel)
 end)
 
+local function giveCitationItem(src, citizenId, fine, incidentId)
+	local Player = QBCore.Functions.GetPlayerByCitizenId(citizenId)
+	local PlayerName = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
+	local Officer = QBCore.Functions.GetPlayer(src)
+	local OfficerFullName = '(' .. Officer.PlayerData.metadata.callsign .. ') ' .. Officer.PlayerData.charinfo.firstname .. ' ' .. Officer.PlayerData.charinfo.lastname
+
+	local date = os.date("%Y-%m-%d %H:%M")
+	local info = {
+		citizenId = citizenId,
+		fine = "$"..fine,
+		date = date,
+		incidentId = "#"..incidentId,
+		officer = OfficerFullName,
+	}
+	Player.Functions.AddItem('mdtcitation', 1, false, info)
+	TriggerClientEvent('QBCore:Notify', src, PlayerName.." received a citation!")
+	TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items['mdtcitation'], "add")
+	TriggerEvent('mdt:server:AddLog', "A Fine was writen by "..OfficerFullName.." and was sent to "..PlayerName..", the Amount was $".. fine ..". (ID: "..incidentId.. ")")
+end
+
+-- Removes money from the players bank and gives them a citation item
 RegisterNetEvent('mdt:server:removeMoney', function(citizenId, fine, incidentId)
 	local src = source
 	local Player = QBCore.Functions.GetPlayerByCitizenId(citizenId)
-	local Officer = QBCore.Functions.GetPlayer(src)
-	local fullname = '(' .. Officer.PlayerData.metadata.callsign .. ') ' .. Officer.PlayerData.charinfo.firstname .. ' ' .. Officer.PlayerData.charinfo.lastname
+	
 	if not antiSpam then
-		local date = os.date("%Y-%m-%d %H:%M")
 		if Player.Functions.RemoveMoney('bank', fine, 'lspd-fine') then
-			TriggerClientEvent('QBCore:Notify', src, citizenId.." received a citation!")
 			TriggerClientEvent('QBCore:Notify', Player.PlayerData.source, fine.."$ was removed from your bank!")
-			local info = {
-				citizenId = citizenId,
-				fine = "$"..fine,
-				date = date,
-				incidentId = "#"..incidentId,
-				officer = fullname,
-			}
-			Player.Functions.AddItem('mdtcitation', 1, false, info)
-			TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items['mdtcitation'], "add")
-			TriggerEvent('mdt:server:AddLog', "A Fine was writen by "..fullname.." and was sent to "..citizenId..", the Amount was $".. fine ..". (ID: "..incidentId.. ")")
+			giveCitationItem(src, citizenId, fine, incidentId)
 		else
 			TriggerClientEvent('QBCore:Notify', Player.PlayerData.source, "Something went wrong!")
 		end
@@ -1754,6 +1779,12 @@ RegisterNetEvent('mdt:server:removeMoney', function(citizenId, fine, incidentId)
 	else
 		TriggerClientEvent('QBCore:Notify', src, "On cooldown!")
 	end
+end)
+
+-- Gives the player a citation item
+RegisterNetEvent('mdt:server:giveCitationItem', function(citizenId, fine, incidentId)
+	local src = source
+	giveCitationItem(src, citizenId, fine, incidentId)
 end)
 
 function getTopOfficers(callback)
