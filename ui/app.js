@@ -268,7 +268,7 @@ $(document).ready(() => {
     let licenses = Object.entries(result.licences);
 
     if (licenses.length == 0 || licenses.length == undefined) {
-      var licenseTypes = ['business', 'pilot', 'weapon', 'driver'];
+      var licenseTypes = ['business', 'weapon', 'driver'];
       licenses = Object.entries(licenseTypes.reduce((licenseType, licenseValue) => (licenseType[licenseValue] = false, licenseType), {}));
     }
 
@@ -276,7 +276,7 @@ $(document).ready(() => {
       licencesHTML = '';
       for (const [lic, hasLic] of licenses) {
         let tagColour = hasLic == true ? "green-tag" : "red-tag";
-        licencesHTML += `<span class="license-tag ${tagColour} ${lic}" data-type="${lic}">${titleCase(lic)}</span>`;
+        licencesHTML += `<span class="license-tag ${tagColour} ${lic}" data-type="${lic}">${mappingLicences(lic)}</span>`;
       }
 
       if (vehicles && vehicles.length > 0) {
@@ -1030,14 +1030,14 @@ $(document).ready(() => {
   });
 
   $(".contextmenu").on("click", ".revoke-licence", function () {
-    // $.post(
-    //   `https://${GetParentResourceName()}/updateLicence`,
-    //   JSON.stringify({
-    //     cid: $(".manage-profile-citizenid-input").val(),
-    //     type: $(this).data("status"),
-    //     status: "revoke",
-    //   })
-    // );
+    $.post(
+      `https://${GetParentResourceName()}/updateLicence`,
+      JSON.stringify({
+        cid: $(".manage-profile-citizenid-input").val(),
+        type: $(this).data("status"),
+        status: "revoke",
+      })
+    );
 
     const Elem = $(this).data("status");
     $(".license-tag")
@@ -1049,14 +1049,14 @@ $(document).ready(() => {
   });
 
   $(".contextmenu").on("click", ".give-licence", function () {
-    // $.post(
-    //   `https://${GetParentResourceName()}/updateLicence`,
-    //   JSON.stringify({
-    //     cid: $(".manage-profile-citizenid-input").val(),
-    //     type: $(this).data("status"),
-    //     status: "give",
-    //   })
-    // );
+    $.post(
+      `https://${GetParentResourceName()}/updateLicence`,
+      JSON.stringify({
+        cid: $(".manage-profile-citizenid-input").val(),
+        type: $(this).data("status"),
+        status: "give",
+      })
+    );
 
     const Elem = $(this).data("status");
     $(".license-tag")
@@ -5565,11 +5565,18 @@ function onMouseDownIncidents(e) {
   document.removeEventListener("mouseup", onMouseDownIncidents);
 }
 
-function titleCase(str) {
-  return str
-    .split(' ')
-    .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
-    .join(' ');
+const translationMap = {
+  "driver": "駕駛執照",
+  "weapon": "武器執照",
+  "business": "商業執照",
+};
+
+function mappingLicences(str) {
+  if (translationMap.hasOwnProperty(str)) {
+    return translationMap[str];
+  } else {
+    return str;
+  }
 }
 
 function searchProfilesResults(result) {
@@ -5624,7 +5631,7 @@ function searchProfilesResults(result) {
     let licArr = Object.entries(metadata.licences);
 
     if (licArr.length == 0 || licArr.length == undefined) {
-      var licenseTypes = ['business', 'pilot', 'weapon', 'driver'];
+      var licenseTypes = ['business', 'weapon', 'driver'];
       licArr = Object.entries(licenseTypes.reduce((licenseType, licenseValue) => (licenseType[licenseValue] = false, licenseType), {}));
     }
 
@@ -5632,7 +5639,7 @@ function searchProfilesResults(result) {
       for (const [lic, hasLic] of licArr) {
         let tagColour =
           hasLic == true ? "green-tag" : "red-tag";
-        licences += `<span class="license-tag ${tagColour}">${titleCase(lic)}</span>`;
+        licences += `<span class="license-tag ${tagColour}">${mappingLicences(lic)}</span>`;
       }
     }
 
