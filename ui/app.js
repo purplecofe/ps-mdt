@@ -4035,7 +4035,7 @@ $(document).ready(() => {
         );
         $(".boloplate-title").html("車牌");
         $(".boloowner-title").html("車主");
-        $(".boloindividual-title").html("個人");
+        $(".boloindividual-title").html("持有人");
         $("#boloplate").attr("placeholder", "在此輸入車牌...");
         $("#bolodetail").attr(
           "placeholder",
@@ -4043,11 +4043,11 @@ $(document).ready(() => {
         );
         $("#boloowner").attr(
           "placeholder",
-          "在此輸入車輛所有者..."
+          "在此輸入車主..."
         );
         $("#boloindividual").attr(
           "placeholder",
-          "在此輸入個人姓名..."
+          "在此輸入持有人..."
         );
         $("#home-warrants-container").fadeIn(0);
         $("#home-reports-container").fadeOut(0);
